@@ -1,0 +1,12 @@
+.stretched {
+  width: 100%;
+  height: 100%;
+}
+
+app-image-browser {
+  flex-grow: 1;
+}
+
+app-image-analyse {
+  flex-grow: 6;
+}

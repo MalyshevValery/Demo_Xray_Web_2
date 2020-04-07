@@ -1,8 +1,11 @@
-<mat-toolbar>
-  <span>Demo X</span>
-</mat-toolbar>
+<div class="stretched" fxLayout="column">
+  <mat-toolbar>
+    <span>Demo X-Ray Analysis</span>
+  </mat-toolbar>
 
-<div id="main">
-  <app-image-browser></app-image-browser>
-  <app-image-analyse></app-image-analyse>
+  <div class="stretched" fxLayoutAlign="space-evenly stretch">
+    <app-image-browser></app-image-browser>
+    <mat-divider [vertical]="true"></mat-divider>
+    <app-image-analyse></app-image-analyse>
+  </div>
 </div>

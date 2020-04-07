@@ -1,10 +1,9 @@
 import 'zone.js';
-import 'zone.js/dist/long-stack-trace-zone.js';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {MatToolbarModule} from '@angular/material';
+import {MatDividerModule, MatToolbarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -22,6 +21,7 @@ import { ImageAnalyseComponent } from './image-analyse/image-analyse.component';
   imports: [
     BrowserModule,
     MatToolbarModule,
+    MatDividerModule,
     BrowserAnimationsModule,
     FlexLayoutModule
   ],
