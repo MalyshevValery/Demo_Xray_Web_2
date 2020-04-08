@@ -3,7 +3,7 @@ import 'zone.js';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {MatDividerModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatDividerModule, MatToolbarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -22,6 +22,7 @@ import { ImageAnalyseComponent } from './image-analyse/image-analyse.component';
     BrowserModule,
     MatToolbarModule,
     MatDividerModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     FlexLayoutModule
   ],

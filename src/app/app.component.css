@@ -4,9 +4,10 @@
 }
 
 app-image-browser {
-  flex-grow: 1;
+  width: 20%;
+  padding: 20px;
 }
 
 app-image-analyse {
-  flex-grow: 6;
+  width: 80%;
 }

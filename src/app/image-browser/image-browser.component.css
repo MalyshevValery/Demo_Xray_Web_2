@@ -1,0 +1,19 @@
+#browser{
+  display: block;
+  flex-grow: 1;
+}
+
+button {
+  padding: 5px;
+  margin-top: 10px;
+  flex-grow: 0;
+}
+
+.image_handler {
+  display: block;
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+}
