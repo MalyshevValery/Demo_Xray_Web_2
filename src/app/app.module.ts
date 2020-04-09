@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { ImageBrowserComponent } from './image-browser/image-browser.component';
 import { ImageAnalyseComponent } from './image-analyse/image-analyse.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ImageAnalyseComponent } from './image-analyse/image-analyse.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatToolbarModule,
     MatDividerModule,
     MatButtonModule,
