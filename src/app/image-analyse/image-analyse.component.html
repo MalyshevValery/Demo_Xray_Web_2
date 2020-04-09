@@ -4,11 +4,15 @@
        id="images">
     <div class="centered_column">
       <h4>Normalized image</h4>
-      <img [src]="'data:image/png;base64,' + results.norm" alt="norm"/>
+      <img [src]="results.norm" alt="norm"/>
+      <a [download]="image.filename"
+         [href]="results.norm">Download Normalized</a>
     </div>
     <div class="centered_column">
       <h4>Processed image</h4>
-      <img [src]="'data:image/png;base64,' + results.proc" alt="proc"/>
+      <img [src]="results.proc" alt="proc"/>
+      <a [download]="image.filename"
+         [href]="results.norm">Download Processed</a>
     </div>
   </div>
   <div *ngIf="image.$analysisResults | async; let results" id="scores">

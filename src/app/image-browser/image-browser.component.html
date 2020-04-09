@@ -13,7 +13,7 @@
 </div>
 <input id="upload" #upload multiple type="file" hidden accept="image/*"/>
 <button (click)="onAddClick()" color="primary" id="add" mat-raised-button>Add
-  Image
+  Images
 </button>
 <button (click)="imageService.reset()" color="warn" id="reset"
         [disabled]="imageService.images.length == 0" mat-raised-button>Reset
