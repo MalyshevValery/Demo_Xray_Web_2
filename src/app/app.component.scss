@@ -8,6 +8,10 @@
   height: calc(100% - 64px);
 }
 
+#filler {
+  flex: 1 1 auto;
+}
+
 mat-toolbar {
   min-height: 64px;
 }
@@ -18,4 +22,13 @@ app-image-browser {
 
 app-image-analyse {
   width: 85%;
+}
+
+span {
+  vertical-align: center;
+}
+
+#get {
+  display: inline-flex;
+  vertical-align: middle;
 }

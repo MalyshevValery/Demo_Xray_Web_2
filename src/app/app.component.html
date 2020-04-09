@@ -1,6 +1,12 @@
 <div id="global-container">
   <mat-toolbar>
     <span>Demo X-Ray Analysis</span>
+    <span id="filler"></span>
+    <a (click)="imageService.getZip()" download="results.zip">
+      <span id="right">
+        Download results <mat-icon id="get">get_app</mat-icon>
+      </span>
+    </a>
   </mat-toolbar>
 
   <div fxLayoutAlign="space-evenly stretch" id="workspace">

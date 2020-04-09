@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
 import {AnalysisResults, emptyImage, Image} from './types';
 import {map, tap} from 'rxjs/operators';
+import * as JSZip from 'jszip';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import {map, tap} from 'rxjs/operators';
 export class ImageService {
   public images: Image[] = [];
   public $selected: Subject<Image> = new Subject<Image>();
+  public zip: JSZip = new JSZip();
 
   constructor(private http: HttpClient) {
   }
@@ -24,7 +26,7 @@ export class ImageService {
       $analysisResults: new ReplaySubject<AnalysisResults>()
     };
     this.analyze(image).pipe(
-      tap(() => image.loaded = true)
+      tap(() => image.loaded = true),
     ).subscribe(image.$analysisResults);
     this.images.push(image);
   }
@@ -32,6 +34,7 @@ export class ImageService {
   reset() {
     this.images = [];
     this.$selected.next(emptyImage);
+    this.zip = new JSZip();
   }
 
   select(image: Image) {
@@ -43,12 +46,21 @@ export class ImageService {
     formData.append('image', image.file);
     formData.append('filename', image.filename);
     return this.http.post<AnalysisResults>(environment.apiURL, formData).pipe(
-      map(results => ({
-        data: results.data,
-        error: results.error,
-        norm: 'data:image/png;base64,' + results.norm,
-        proc: 'data:image/png;base64,' + results.proc
+      tap(result => {
+        this.zip.file(image.filename + '-norm.png', result.norm, {type: 'base64'});
+      }),
+      map(result => ({
+        data: result.data,
+        error: result.error,
+        norm: 'data:image/png;base64,' + result.norm,
+        proc: 'data:image/png;base64,' + result.proc
       })),
+    );
+  }
+
+  getZip() {
+    this.zip.generateAsync({type: 'blob'}).then(
+      blob => open(URL.createObjectURL(blob))
     );
   }
 }
