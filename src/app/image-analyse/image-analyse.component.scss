@@ -1,0 +1,36 @@
+#container {
+  height: 100%;
+  width: calc(100% - 40px);
+  margin: 0 20px;
+}
+
+.centered_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.centered_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#images {
+  width: 100%;
+}
+
+#scores {
+  margin: 20px 0;
+  display: grid;
+  column-gap: 30px;
+  row-gap: 10px;
+  grid-template-areas: 'class_number class_number' 'bronchitis emphysema' 'focal_shadows pneumonia' 'pneumosclerosis tuberculosis';
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
