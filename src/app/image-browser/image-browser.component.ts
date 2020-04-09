@@ -5,7 +5,7 @@ import {ImageService} from '../image.service';
 @Component({
   selector: 'app-image-browser',
   templateUrl: './image-browser.component.html',
-  styleUrls: ['./image-browser.component.css']
+  styleUrls: ['./image-browser.component.scss']
 })
 
 

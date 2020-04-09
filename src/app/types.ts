@@ -16,6 +16,16 @@ export interface AnalysisResults {
   proc: string;
 }
 
+export const names = {
+  bronchitis: 'Bronchitis',
+  class_number: 'Abnormal lungs',
+  emphysema: 'Emphysema',
+  focal_shadows: 'Focal shadows',
+  pneumonia: 'Pneumonia',
+  pneumosclerosis: 'Pneumosclerosis',
+  tuberculosis: 'Tuberculosis'
+};
+
 export interface Image {
   file: File;
   imageURL: string;

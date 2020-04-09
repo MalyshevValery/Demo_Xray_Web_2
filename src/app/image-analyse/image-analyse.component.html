@@ -12,6 +12,8 @@
     </div>
   </div>
   <div *ngIf="image.$analysisResults | async; let results" id="scores">
-    {{results.data.class_number}}
+    <app-score *ngFor="let key of names()" [name]="key"
+               [score]="results.data[key]" style="grid-area: {{key}}">
+    </app-score>
   </div>
 </div>
