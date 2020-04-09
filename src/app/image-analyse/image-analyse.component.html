@@ -1,6 +1,17 @@
-<div *ngIf="$image | async; let image">
-  {{image.filename}}
-  <div *ngIf="image.$analysisResults | async; let results">
-    {{results.data}}
+<div *ngIf="$image | async; let image" class="centered_column" id="container">
+  <h3>{{image.filename}}</h3>
+  <div *ngIf="image.$analysisResults | async; let results" class="centered_row"
+       id="images">
+    <div class="centered_column">
+      <h4>Normalized image</h4>
+      <img [src]="'data:image/png;base64,' + results.norm" alt="norm"/>
+    </div>
+    <div class="centered_column">
+      <h4>Processed image</h4>
+      <img [src]="'data:image/png;base64,' + results.proc" alt="proc"/>
+    </div>
+  </div>
+  <div *ngIf="image.$analysisResults | async; let results" id="scores">
+    {{results.data.class_number}}
   </div>
 </div>
