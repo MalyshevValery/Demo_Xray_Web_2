@@ -12,6 +12,7 @@ import {ImageService} from '../image.service';
 export class ImageBrowserComponent implements OnInit {
 
   @ViewChild('upload') fileUpload: ElementRef;
+  readonly iconSize = 40;
 
   constructor(public imageService: ImageService, public sanitizer: DomSanitizer) {
   }

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, ReplaySubject, Subject} from 'rxjs';
-import {AnalysisResults, Image} from './types';
-import {last, share} from 'rxjs/operators';
+import {Observable, ReplaySubject, Subject} from 'rxjs';
+import {AnalysisResults, emptyImage, Image} from './types';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +20,18 @@ export class ImageService {
       file,
       imageURL: URL.createObjectURL(file),
       filename: file.name,
+      loaded: false,
       $analysisResults: new ReplaySubject<AnalysisResults>()
     };
-    this.analyze(image).subscribe(image.$analysisResults);
+    this.analyze(image).pipe(
+      tap(() => image.loaded = true)
+    ).subscribe(image.$analysisResults);
     this.images.push(image);
   }
 
   reset() {
     this.images = [];
-    this.$selected.next({
-      file: null,
-      imageURL: null,
-      filename: null,
-      $analysisResults: new BehaviorSubject<AnalysisResults>(null)
-    });
+    this.$selected.next(emptyImage);
   }
 
   select(image: Image) {
@@ -45,8 +43,6 @@ export class ImageService {
     formData.append('image', image.file);
     formData.append('filename', image.filename);
     return this.http.post<AnalysisResults>(environment.apiURL, formData).pipe(
-      share(),
-      last(),
     );
   }
 }

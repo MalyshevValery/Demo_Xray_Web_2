@@ -6,7 +6,9 @@ import {NgModule} from '@angular/core';
 import {
   MatButtonModule,
   MatDividerModule,
+  MatIconModule,
   MatProgressBarModule,
+  MatProgressSpinnerModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -32,9 +34,12 @@ import {ScoreComponent} from './image-analyse/score/score.component';
     MatToolbarModule,
     MatDividerModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
     MatProgressBarModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,19 +1,26 @@
 #browser {
   display: block;
   flex-grow: 1;
+  overflow: auto;
+  padding: 20px 40px 10px 40px;
 }
 
 button {
   padding: 5px;
-  margin-top: 10px;
+  margin: 0 20px 10px 20px;
   flex-grow: 0;
 }
 
 .image_handler {
   display: block;
   margin-bottom: 20px;
+  position: relative;
 }
 
 img {
   max-width: 100%;
+}
+
+mat-spinner, mat-icon {
+  position: absolute;
 }

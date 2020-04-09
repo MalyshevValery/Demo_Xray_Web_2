@@ -1,6 +1,11 @@
 <div id="browser">
   <div *ngFor="let image of imageService.images" class="image_handler"
        fxFlexAlign="center center">
+    <mat-spinner *ngIf="!image.loaded" diameter="{{iconSize}}"></mat-spinner>
+    <mat-icon *ngIf="image.loaded"
+              [ngStyle]="{'color':'green', 'font-size': iconSize + 'px'}">
+      check_circle
+    </mat-icon>
     <img (click)="imageService.select(image)"
          [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)"
          alt="image"/>
@@ -11,5 +16,5 @@
   Image
 </button>
 <button (click)="imageService.reset()" color="warn" id="reset"
-        mat-raised-button>Reset
+        [disabled]="imageService.images.length == 0" mat-raised-button>Reset
 </button>

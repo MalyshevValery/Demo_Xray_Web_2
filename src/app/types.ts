@@ -1,4 +1,4 @@
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 export interface AnalysisResults {
   data:
@@ -30,5 +30,14 @@ export interface Image {
   file: File;
   imageURL: string;
   filename: string;
+  loaded: boolean;
   $analysisResults: Subject<AnalysisResults>;
 }
+
+export const emptyImage: Image = {
+  file: null,
+  imageURL: null,
+  filename: null,
+  loaded: true,
+  $analysisResults: new BehaviorSubject<AnalysisResults>(null)
+};
