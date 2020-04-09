@@ -1,0 +1,6 @@
+<div *ngIf="$image | async; let image">
+  {{image.filename}}
+  <div *ngIf="image.$analysisResults | async; let results">
+    {{results.data}}
+  </div>
+</div>

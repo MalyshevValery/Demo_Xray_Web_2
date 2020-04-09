@@ -1,8 +1,15 @@
 <div id="browser">
-  <div class="image_handler" *ngFor="let image of imageService.images" fxFlexAlign="center center">
-    <img [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)" />
+  <div *ngFor="let image of imageService.images" class="image_handler"
+       fxFlexAlign="center center">
+    <img (click)="imageService.select(image)"
+         [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)"
+         alt="image"/>
   </div>
 </div>
 <input id="upload" #upload multiple type="file" hidden accept="image/*"/>
-<button id="add" mat-raised-button color="primary" (click)="onAddClick()">Add Image</button>
-<button id="reset" mat-raised-button color="warn" (click)="imageService.reset()">Reset</button>
+<button (click)="onAddClick()" color="primary" id="add" mat-raised-button>Add
+  Image
+</button>
+<button (click)="imageService.reset()" color="warn" id="reset"
+        mat-raised-button>Reset
+</button>
