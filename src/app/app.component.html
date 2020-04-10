@@ -2,15 +2,18 @@
   <mat-toolbar>
     <span>Demo X-Ray Analysis</span>
     <span id="filler"></span>
-    <a (click)="imageService.getZip()" download="results.zip">
-      <span id="right">
+
+    <span id="right">
+      <a (click)="imageService.getZip()" *ngIf="imageService.isReady()"
+         download="results.zip" id="download-link">
         Download results <mat-icon id="get">get_app</mat-icon>
-      </span>
-    </a>
+      </a>
+    </span>
   </mat-toolbar>
 
   <div fxLayoutAlign="space-evenly stretch" id="workspace">
-    <app-image-browser fxLayout="column" fxFlexAlign="center stretch"></app-image-browser>
+    <app-image-browser fxFlexAlign="center stretch"
+                       fxLayout="column"></app-image-browser>
     <mat-divider [vertical]="true"></mat-divider>
     <app-image-analyse></app-image-analyse>
   </div>
