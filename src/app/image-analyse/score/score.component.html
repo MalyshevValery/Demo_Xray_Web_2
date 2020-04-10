@@ -1,5 +1,6 @@
 <div class="{{getClass()}}" fxFlexAlign="center stretch" fxLayout="column">
-  <p>{{display(name)}}: <b>{{score * 100 | number : '1.1-1'}}%</b></p>
+  <p>{{display(name)}}: <b *ngIf="!hideScore">{{score * 100 | number : '1.1-1'}}
+    %</b></p>
   <mat-progress-bar [value]="score * 100"
                     mode="determinate"></mat-progress-bar>
 </div>

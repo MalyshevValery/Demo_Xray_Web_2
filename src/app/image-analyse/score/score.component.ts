@@ -9,6 +9,7 @@ import {names} from '../../types';
 export class ScoreComponent implements OnInit {
   @Input() public score: number;
   @Input() public name: string;
+  @Input() public hideScore: boolean;
 
   constructor() {
   }
