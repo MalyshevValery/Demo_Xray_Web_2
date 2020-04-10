@@ -9,6 +9,7 @@
     <img (click)="imageService.select(image)"
          [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)"
          alt="image"/>
+    <div class="filename">{{image.filename}}</div>
   </div>
 </div>
 <input id="upload" #upload multiple type="file" hidden accept="image/*"/>

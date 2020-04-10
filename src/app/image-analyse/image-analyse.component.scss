@@ -1,4 +1,4 @@
-#container {
+.container {
   height: 100%;
   width: calc(100% - 40px);
   margin: 0 20px;
@@ -40,4 +40,9 @@ img {
 a {
   text-decoration: none;
   color: lightgray;
+}
+
+.tip {
+  text-align: center;
+  color: gray;
 }

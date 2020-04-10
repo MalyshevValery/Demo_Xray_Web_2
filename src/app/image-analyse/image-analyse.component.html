@@ -1,5 +1,5 @@
-<div *ngIf="$image | async; let image" class="centered_column" id="container">
-  <h3>{{image.filename}}</h3>
+<div *ngIf="$image | async; let image " class="centered_column container">
+  <h3 *ngIf="image.$analysisResults | async">{{image.filename}}</h3>
   <div *ngIf="image.$analysisResults | async; let results" class="centered_row"
        id="images">
     <div class="centered_column">
@@ -21,4 +21,12 @@
                [score]="results.data[key]" style="grid-area: {{key}}">
     </app-score>
   </div>
+  <div *ngIf="!(image.$analysisResults | async)" class="tip">
+    Please wait for image to be processed. Results will appear here.
+  </div>
+</div>
+
+<div *ngIf="!($image | async) || (imageService.images.length == 0)"
+     class=" container centered_column tip">
+  Add images to be processed. Click on one of them to see results.
 </div>

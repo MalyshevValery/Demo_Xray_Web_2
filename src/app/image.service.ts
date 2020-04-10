@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
-import {AnalysisResults, emptyImage, Image} from './types';
+import {AnalysisResults, Image} from './types';
 import {map, tap} from 'rxjs/operators';
 import * as JSZip from 'jszip';
 
@@ -37,7 +37,7 @@ export class ImageService {
 
   reset() {
     this.images = [];
-    this.$selected.next(emptyImage);
+    this.$selected.next(null);
     this.zip = new JSZip();
     this.nReady = 0;
   }
