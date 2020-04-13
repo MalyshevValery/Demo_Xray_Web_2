@@ -5,6 +5,7 @@ import {Observable, ReplaySubject, Subject} from 'rxjs';
 import {AnalysisResults, Image} from './types';
 import {map, tap} from 'rxjs/operators';
 import * as JSZip from 'jszip';
+import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -18,37 +19,21 @@ export class ImageService {
   constructor(private http: HttpClient) {
   }
 
-  add(file: File) {
-    const image: Image = {
-      file,
-      imageURL: URL.createObjectURL(file),
-      filename: file.name,
-      loaded: false,
-      $analysisResults: new ReplaySubject<AnalysisResults>()
-    };
-    this.analyze(image).pipe(
-      tap(() => {
-        image.loaded = true;
-        this.nReady += 1;
-      }),
-    ).subscribe(image.$analysisResults);
-    this.images.push(image);
+  addFile(file: File) {
+    this.add(file, URL.createObjectURL(file), file.name);
   }
 
-  reset() {
-    this.images = [];
-    this.$selected.next(null);
-    this.zip = new JSZip();
-    this.nReady = 0;
-  }
-
-  select(image: Image) {
-    this.$selected.next(image);
+  addURL(url: string) {
+    this.add(null, url, uuid.v4());
   }
 
   analyze(image: Image): Observable<AnalysisResults> {
     const formData = new FormData();
-    formData.append('image', image.file);
+    if (image.file) {
+      formData.append('image', image.file);
+    } else {
+      formData.append('image', image.imageURL);
+    }
     formData.append('filename', image.filename);
     return this.http.post<AnalysisResults>(environment.apiURL, formData).pipe(
       tap(result => {
@@ -66,6 +51,38 @@ export class ImageService {
         proc: 'data:image/png;base64,' + result.proc
       })),
     );
+  }
+
+  reset() {
+    this.images = [];
+    this.$selected.next(null);
+    this.zip = new JSZip();
+    this.nReady = 0;
+  }
+
+  select(image: Image) {
+    this.$selected.next(image);
+  }
+
+  private add(file: File, imageURL: string, filename: string) {
+    const image: Image = {
+      file,
+      imageURL,
+      filename,
+      loaded: false,
+      $analysisResults: new ReplaySubject<AnalysisResults>()
+    };
+    this.analyze(image).pipe(
+      tap(result => {
+        image.loaded = true;
+        if (result.error) {
+          image.error = result.error;
+          console.log(result.error);
+        }
+        this.nReady += 1;
+      }),
+    ).subscribe(image.$analysisResults);
+    this.images.push(image);
   }
 
   getZip() {

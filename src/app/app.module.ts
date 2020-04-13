@@ -23,6 +23,8 @@ import {ImageAnalyseComponent} from './image-analyse/image-analyse.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ScoreComponent} from './image-analyse/score/score.component';
 import {InputDialogComponent} from './image-browser/input-dialog/input-dialog.component';
+import {FormsModule} from '@angular/forms';
+import {DicomViewerModule} from 'ng-dicomviewer';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {InputDialogComponent} from './image-browser/input-dialog/input-dialog.co
     MatProgressBarModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    DicomViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

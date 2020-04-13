@@ -32,6 +32,7 @@ export interface Image {
   filename: string;
   loaded: boolean;
   $analysisResults: Subject<AnalysisResults>;
+  error?: string;
 }
 
 export const emptyImage: Image = {

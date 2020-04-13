@@ -1,6 +1,7 @@
 <div *ngIf="$image | async; let image " class="centered_column container">
   <h3 *ngIf="image.$analysisResults | async">{{image.filename}}</h3>
-  <div *ngIf="image.$analysisResults | async; let results" class="centered_row"
+  <div *ngIf="!image.error && image.$analysisResults | async; let results"
+       class="centered_row"
        id="images">
     <div class="centered_column">
       <h4>Normalized image</h4>
@@ -15,7 +16,8 @@
          [href]="results.proc">Download Processed</a>
     </div>
   </div>
-  <div *ngIf="image.$analysisResults | async; let results" id="scores">
+  <div *ngIf="!image.error && image.$analysisResults | async; let results"
+       id="scores">
     <app-score *ngFor="let key of names()" [hideScore]="key !== 'class_number'"
                [name]="key"
                [score]="results.data[key]" style="grid-area: {{key}}">
@@ -24,6 +26,7 @@
   <div *ngIf="!(image.$analysisResults | async)" class="tip">
     Please wait for image to be processed. Results will appear here.
   </div>
+  <div *ngIf="image.error" class="tip">Error</div>
 </div>
 
 <div *ngIf="!($image | async) || (imageService.images.length == 0)"

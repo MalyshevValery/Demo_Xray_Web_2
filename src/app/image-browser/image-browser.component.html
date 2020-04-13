@@ -1,13 +1,16 @@
 <div id="browser">
   <div *ngFor="let image of imageService.images" class="image_handler"
-       fxFlexAlign="center center">
+       (click)="imageService.select(image)" fxFlexAlign="center center">
     <mat-spinner *ngIf="!image.loaded" diameter="{{iconSize}}"></mat-spinner>
-    <mat-icon *ngIf="image.loaded"
+    <mat-icon *ngIf="image.loaded && !image.error"
               [ngStyle]="{'color':'green', 'font-size': iconSize + 'px'}">
       check_circle
     </mat-icon>
-    <img (click)="imageService.select(image)"
-         [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)"
+    <mat-icon *ngIf="image.loaded && image.error"
+              [ngStyle]="{'color':'red', 'font-size': iconSize + 'px'}">
+      error
+    </mat-icon>
+    <img [src]="sanitizer.bypassSecurityTrustUrl(image.imageURL)"
          alt="image"/>
     <div class="filename">{{image.filename}}</div>
   </div>

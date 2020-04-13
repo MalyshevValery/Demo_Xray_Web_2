@@ -9,6 +9,7 @@ import {MatDialogRef} from '@angular/material';
 })
 export class InputDialogComponent implements OnInit {
   @ViewChild('upload') fileUpload: ElementRef;
+  public currentURL: string;
 
   constructor(private imageService: ImageService,
               private dialogRef: MatDialogRef<InputDialogComponent>) {
@@ -21,7 +22,7 @@ export class InputDialogComponent implements OnInit {
     const fileUpload = this.fileUpload.nativeElement;
     fileUpload.onchange = () => {
       for (const file of fileUpload.files) {
-        this.imageService.add(file);
+        this.imageService.addFile(file);
       }
     };
     fileUpload.click();
@@ -29,6 +30,7 @@ export class InputDialogComponent implements OnInit {
   }
 
   onURLSubmit(): void {
-
+    this.imageService.addURL(this.currentURL);
+    this.dialogRef.close();
   }
 }
