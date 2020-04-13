@@ -20,7 +20,11 @@ export class ImageService {
   }
 
   addFile(file: File) {
-    this.add(file, URL.createObjectURL(file), file.name);
+    if (file.name.endsWith('dcm')) {
+      this.add(file, 'https://via.placeholder.com/256x256?text=DICOM', file.name);
+    } else {
+      this.add(file, URL.createObjectURL(file), file.name);
+    }
   }
 
   addURL(url: string) {
