@@ -6,13 +6,13 @@
     <div class="centered_column">
       <h4>Normalized image</h4>
       <img [src]="results.norm" alt="norm"/>
-      <a [download]="image.filename"
+      <a [download]="image.filename + '-norm.png'"
          [href]="results.norm">Download Normalized</a>
     </div>
     <div class="centered_column">
       <h4>Processed image</h4>
       <img [src]="results.proc" alt="proc"/>
-      <a [download]="image.filename"
+      <a [download]="image.filename + '-proc.png'"
          [href]="results.proc">Download Processed</a>
     </div>
   </div>
