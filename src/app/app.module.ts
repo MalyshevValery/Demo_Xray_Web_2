@@ -5,8 +5,10 @@ import {NgModule} from '@angular/core';
 
 import {
   MatButtonModule,
+  MatDialogModule,
   MatDividerModule,
   MatIconModule,
+  MatInputModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatToolbarModule
@@ -20,13 +22,15 @@ import {ImageBrowserComponent} from './image-browser/image-browser.component';
 import {ImageAnalyseComponent} from './image-analyse/image-analyse.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ScoreComponent} from './image-analyse/score/score.component';
+import {InputDialogComponent} from './image-browser/input-dialog/input-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageBrowserComponent,
     ImageAnalyseComponent,
-    ScoreComponent
+    ScoreComponent,
+    InputDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,12 +40,15 @@ import {ScoreComponent} from './image-analyse/score/score.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatInputModule,
+    MatDialogModule,
     MatProgressBarModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [InputDialogComponent]
 })
 export class AppModule { }

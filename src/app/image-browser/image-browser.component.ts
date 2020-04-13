@@ -1,6 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ImageService} from '../image.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {InputDialogComponent} from './input-dialog/input-dialog.component';
 
 @Component({
   selector: 'app-image-browser',
@@ -10,23 +12,20 @@ import {ImageService} from '../image.service';
 
 
 export class ImageBrowserComponent implements OnInit {
-
-  @ViewChild('upload') fileUpload: ElementRef;
   readonly iconSize = 40;
 
-  constructor(public imageService: ImageService, public sanitizer: DomSanitizer) {
+  constructor(public imageService: ImageService,
+              public sanitizer: DomSanitizer,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
   }
 
   onAddClick() {
-    const fileUpload = this.fileUpload.nativeElement;
-    fileUpload.onchange = () => {
-      for (const file of fileUpload.files) {
-        this.imageService.add(file);
-      }
-    };
-    fileUpload.click();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(InputDialogComponent, dialogConfig);
   }
 }

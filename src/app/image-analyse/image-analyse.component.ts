@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ImageService} from '../image.service';
 import {Observable} from 'rxjs';
-import {DomSanitizer} from '@angular/platform-browser';
 import {Image, names} from '../types';
 
 @Component({
@@ -12,8 +11,7 @@ import {Image, names} from '../types';
 export class ImageAnalyseComponent implements OnInit {
   public $image: Observable<Image>;
 
-  constructor(private imageService: ImageService,
-              public sanitizer: DomSanitizer) {
+  constructor(public imageService: ImageService) {
     this.$image = imageService.$selected;
   }
 
