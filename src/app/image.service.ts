@@ -28,7 +28,7 @@ export class ImageService {
   }
 
   addURL(url: string) {
-    this.add(null, url, uuid.v4());
+    this.add(null, url, uuid.v4() + '.png');
   }
 
   analyze(image: Image): Observable<AnalysisResults> {
