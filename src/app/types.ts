@@ -19,10 +19,10 @@ export interface AnalysisResults {
 export const names = {
   bronchitis: 'Bronchitis',
   class_number: 'Abnormal lungs',
-  emphysema: 'Emphysema',
+  // emphysema: 'Emphysema',
   focal_shadows: 'Focal shadows',
   pneumonia: 'Pneumonia',
-  pneumosclerosis: 'Pneumosclerosis',
+  // pneumosclerosis: 'Pneumosclerosis',
   tuberculosis: 'Tuberculosis'
 };
 
