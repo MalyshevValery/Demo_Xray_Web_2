@@ -20,8 +20,10 @@ export class ImageService {
   }
 
   addFile(file: File) {
-    if (file.name.endsWith('dcm')) {
+    if (file.name.endsWith('dcm') || file.name.endsWith('dicom') || file.name.endsWith('bin')) {
       this.add(file, 'https://via.placeholder.com/256x256?text=DICOM', file.name);
+    } else if (file.name.endsWith('eli')) {
+      this.add(file, 'https://via.placeholder.com/256x256?text=ELI', file.name);
     } else {
       this.add(file, URL.createObjectURL(file), file.name);
     }
