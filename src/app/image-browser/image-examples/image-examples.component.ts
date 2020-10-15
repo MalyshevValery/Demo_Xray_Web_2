@@ -34,6 +34,7 @@ export class ImageExamplesComponent implements OnInit, OnDestroy {
 
   select(image: ResponseImage) {
     this.imageService.addURL(image.base64, image.name);
+    this.dialogRef.close();
   }
 
   _dirAddChildren(newImage: ResponseImage) {

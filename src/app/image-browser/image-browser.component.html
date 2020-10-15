@@ -15,6 +15,7 @@
     <div class="filename">{{image.filename}}</div>
   </div>
 </div>
+<mat-icon *ngIf="imageService.images.length == 0" id="arrow">arrow_downward</mat-icon>
 <button (click)="onAddClick()" color="primary" id="add" mat-raised-button>Add
   Images
 </button>
