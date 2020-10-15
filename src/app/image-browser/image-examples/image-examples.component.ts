@@ -14,12 +14,12 @@ import {environment} from '../../../environments/environment';
 })
 export class ImageExamplesComponent implements OnInit, OnDestroy {
 
-  private images: ResponseImage[] = [];
+  public images: ResponseImage[] = [];
   private closed = false;
 
-  constructor(private imageService: ImageService,
+  constructor(public imageService: ImageService,
               private http: HttpClient,
-              private dialogRef: MatDialogRef<ImageExamplesComponent>) {
+              public dialogRef: MatDialogRef<ImageExamplesComponent>) {
   }
 
   ngOnInit(): void {
