@@ -11,7 +11,8 @@ import {
   MatInputModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatGridListModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -25,6 +26,7 @@ import {ScoreComponent} from './image-analyse/score/score.component';
 import {InputDialogComponent} from './image-browser/input-dialog/input-dialog.component';
 import {FormsModule} from '@angular/forms';
 import {DicomViewerModule} from 'ng-dicomviewer';
+import { ImageExamplesComponent } from './image-browser/image-examples/image-examples.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {DicomViewerModule} from 'ng-dicomviewer';
     ImageAnalyseComponent,
     ScoreComponent,
     InputDialogComponent,
+    ImageExamplesComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import {DicomViewerModule} from 'ng-dicomviewer';
     MatIconModule,
     MatInputModule,
     MatDialogModule,
+    MatGridListModule,
     MatProgressBarModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

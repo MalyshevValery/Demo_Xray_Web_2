@@ -29,8 +29,11 @@ export class ImageService {
     }
   }
 
-  addURL(url: string) {
-    this.add(null, url, uuid.v4() + '.png');
+  addURL(url: string, name: string = null) {
+    if (name === null) {
+      name = uuid.v4() + '.png';
+    }
+    this.add(null, url, name);
   }
 
   analyze(image: Image): Observable<AnalysisResults> {
@@ -41,7 +44,7 @@ export class ImageService {
       formData.append('image', image.imageURL);
     }
     formData.append('filename', image.filename);
-    return this.http.post<AnalysisResults>(environment.apiURL, formData).pipe(
+    return this.http.post<AnalysisResults>(environment.apiURL + '/process', formData).pipe(
       tap(result => {
         this.zip.file(image.filename + '-norm.png',
           result.norm, {base64: true});

@@ -7,10 +7,14 @@ mat-form-field {
   margin-right: 20px;
 }
 
-#uploadBut {
+#uploadBut #selectBut {
   margin: 0 12.5%;
 }
 
 #dialog-container {
+  margin-top: 10px;
+}
+
+#secondSpan {
   margin-top: 10px;
 }

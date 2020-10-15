@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ImageService} from '../../image.service';
-import {MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
+import {ImageExamplesComponent} from '../image-examples/image-examples.component';
 
 @Component({
   selector: 'app-input-dialog',
@@ -12,6 +13,7 @@ export class InputDialogComponent implements OnInit {
   public currentURL: string;
 
   constructor(private imageService: ImageService,
+              private dialog: MatDialog,
               private dialogRef: MatDialogRef<InputDialogComponent>) {
   }
 
@@ -31,6 +33,18 @@ export class InputDialogComponent implements OnInit {
 
   onURLSubmit(): void {
     this.imageService.addURL(this.currentURL);
+    this.dialogRef.close();
+  }
+
+  onSelect(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.minHeight = '90vh';
+    dialogConfig.minWidth = '90vw';
+    dialogConfig.maxHeight = '90vh';
+    dialogConfig.maxWidth = '90vw';
+
+    this.dialog.open(ImageExamplesComponent, dialogConfig);
     this.dialogRef.close();
   }
 }

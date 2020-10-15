@@ -35,6 +35,11 @@ export interface Image {
   error?: string;
 }
 
+export interface ResponseImage {
+  base64: string;
+  name: string;
+}
+
 export const emptyImage: Image = {
   file: null,
   imageURL: null,
