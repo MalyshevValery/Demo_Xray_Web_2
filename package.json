@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "@oryd/kratos-client": "^0.5.3-alpha.1",
     "cornerstone-core": "^2.3.0",
     "cornerstone-math": "^0.1.8",
     "cornerstone-tools": "^4.15.0",

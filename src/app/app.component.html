@@ -9,6 +9,15 @@
         Download results <mat-icon id="get">get_app</mat-icon>
       </a>
     </span>
+    <div *ngIf="!(identity$ | async)">
+      <button mat-button (click)="login()">Login <mat-icon>login</mat-icon></button>
+    </div>
+    <div *ngIf="identity$ | async as identity" class="log">
+      <div class="name">
+        {{identity.identity.traits['first_name']}} {{identity.identity.traits['last_name']}}
+      </div>
+      <button mat-button (click)="logout()"><mat-icon>logout</mat-icon></button>
+    </div>
   </mat-toolbar>
 
   <div fxLayoutAlign="space-evenly stretch" id="workspace">

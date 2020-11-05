@@ -36,3 +36,15 @@ span {
 #download-link:hover {
   cursor: pointer !important;
 }
+
+.name {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.log {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
