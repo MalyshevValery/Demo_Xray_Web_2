@@ -1,24 +1,24 @@
-<h3>Add Images</h3>
+<h3>Добавить изображение</h3>
 <mat-divider></mat-divider>
 <div fxLayout="column" fxLayoutAlign="space-evenly stretch"
      id="dialog-container">
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <mat-form-field>
-      <input [(ngModel)]="currentURL" matInput placeholder="Paste image URL"/>
+      <input [(ngModel)]="currentURL" matInput placeholder="URL изображения"/>
     </mat-form-field>
     <button (click)="onURLSubmit()" color="primary" id="submitBut"
             mat-raised-button>
-      Submit
+      ОК
     </button>
   </div>
-  <span><b>OR</b></span>
+  <span><b>ИЛИ</b></span>
   <input #upload accept="image/*,.dcm,.dicom,.eli,.bin" hidden id="upload" multiple type="file"/>
   <button (click)="onUpload()" color="primary" id="uploadBut" mat-raised-button>
     <mat-icon>publish</mat-icon>
-    Upload from computer
+    Загрузить с диска
   </button>
-  <span id="secondSpan"><b>OR</b></span>
+  <span id="secondSpan"><b>ИЛИ</b></span>
   <button (click)="onSelect()" color="primary" id="selectBut" mat-raised-button>
-    Select from given samples
+    Выбрать из примеров изображений
   </button>
 </div>

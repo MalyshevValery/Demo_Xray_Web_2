@@ -17,13 +17,13 @@ export interface AnalysisResults {
 }
 
 export const names = {
-  bronchitis: 'Bronchitis',
-  class_number: 'Abnormal lungs',
+  bronchitis: 'Бронхит',
+  class_number: 'Наличие заболевания',
   // emphysema: 'Emphysema',
-  focal_shadows: 'Focal shadows',
-  pneumonia: 'Pneumonia',
+  focal_shadows: 'Очаговые тени',
+  pneumonia: 'Пневмония',
   // pneumosclerosis: 'Pneumosclerosis',
-  tuberculosis: 'Tuberculosis'
+  tuberculosis: 'Туберкулез'
 };
 
 export interface Image {

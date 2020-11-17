@@ -44,7 +44,7 @@ export class ImageService {
       formData.append('image', image.imageURL);
     }
     formData.append('filename', image.filename);
-    return this.http.post<AnalysisResults>(environment.apiURL + '/process', formData).pipe(
+    return this.http.post<AnalysisResults>(environment.apiURL + '/process', formData, {withCredentials: true}).pipe(
       tap(result => {
         this.zip.file(image.filename + '-norm.png',
           result.norm, {base64: true});

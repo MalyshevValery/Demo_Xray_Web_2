@@ -16,9 +16,9 @@
   </div>
 </div>
 <mat-icon *ngIf="imageService.images.length == 0" id="arrow">arrow_downward</mat-icon>
-<button (click)="onAddClick()" color="primary" id="add" mat-raised-button>Add
-  Images
+<button (click)="onAddClick()" color="primary" id="add" mat-raised-button [disabled]="identity == undefined ? true : null">
+  Добавить изображения
 </button>
 <button (click)="imageService.reset()" color="warn" id="reset"
-        [disabled]="imageService.images.length == 0" mat-raised-button>Reset
+        [disabled]="imageService.images.length == 0" mat-raised-button>Сброс
 </button>

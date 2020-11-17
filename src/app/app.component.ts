@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ImageService} from './image.service';
 import {environment} from '../environments/environment';
 import {Session} from '@oryd/kratos-client';
-import {BehaviorSubject} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -12,7 +12,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'DemoXRayWeb2';
-  identity$ = new BehaviorSubject<Session>(null);
+  identity$ = new ReplaySubject<Session>(null);
 
   constructor(public imageService: ImageService, private http: HttpClient) {
   }

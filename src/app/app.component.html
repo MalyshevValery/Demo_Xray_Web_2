@@ -1,6 +1,6 @@
 <div id="global-container">
   <mat-toolbar color="primary">
-    <span>Detection of Lung Diseases in Chest X-Rays</span>
+    <span>Определение заболеваний легких на рентгеновских снимках</span>
     <span id="filler"></span>
 
     <span id="right">
@@ -10,7 +10,7 @@
       </a>
     </span>
     <div *ngIf="!(identity$ | async)">
-      <button mat-button (click)="login()">Login <mat-icon>login</mat-icon></button>
+      <button mat-button (click)="login()">Вход <mat-icon>login</mat-icon></button>
     </div>
     <div *ngIf="identity$ | async as identity" class="log">
       <div class="name">
@@ -21,9 +21,9 @@
   </mat-toolbar>
 
   <div fxLayoutAlign="space-evenly stretch" id="workspace">
-    <app-image-browser fxFlexAlign="center stretch"
+    <app-image-browser [identity]="identity$ | async" fxFlexAlign="center stretch"
                        fxLayout="column"></app-image-browser>
     <mat-divider [vertical]="true"></mat-divider>
-    <app-image-analyse></app-image-analyse>
+    <app-image-analyse  [identity]="identity$ | async"></app-image-analyse>
   </div>
 </div>

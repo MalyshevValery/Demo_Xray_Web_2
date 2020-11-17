@@ -4,16 +4,16 @@
        class="centered_row"
        id="images">
     <div class="centered_column">
-      <h4>Normalized image</h4>
+      <h4>Нормализованное изображение</h4>
       <img [src]="results.norm" alt="norm"/>
       <a [download]="image.filename + '-norm.png'"
-         [href]="results.norm">Download Normalized</a>
+         [href]="results.norm">Скачать Нормализованное</a>
     </div>
     <div class="centered_column">
-      <h4>Processed image</h4>
+      <h4>Обработанное изображение</h4>
       <img [src]="results.proc" alt="proc"/>
       <a [download]="image.filename + '-proc.png'"
-         [href]="results.proc">Download Processed</a>
+         [href]="results.proc">Скачать Обработанное</a>
     </div>
   </div>
   <div *ngIf="!image.error && image.$analysisResults | async; let results"
@@ -30,7 +30,8 @@
 </div>
 
 <div *ngIf="!($image | async) || (imageService.images.length == 0)"
-     class=" container centered_column tip">
-  Add chest X-Ray images for analysis. Click on one of images on the left to see
-  results.
+     class=" container centered_column">
+  <span class="warn"><b>НЕ ДЛЯ ДИАГНОСТИЧЕСКОГО ИСПОЛЬЗОВАНИЯ</b></span>
+  <span *ngIf="!identity" class="warn-login">Войдите для использования сервиса</span>
+  <span class="tip">Добавьте рентгеновские изображения грудной клетки для анализа. Нажмите на одно из изображений слева, чтобы просмотреть результаты.</span>
 </div>

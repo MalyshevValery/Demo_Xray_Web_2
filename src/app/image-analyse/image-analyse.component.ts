@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ImageService} from '../image.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Image, names} from '../types';
+import {Session} from '@oryd/kratos-client';
 
 @Component({
   selector: 'app-image-analyse',
@@ -10,6 +11,7 @@ import {Image, names} from '../types';
 })
 export class ImageAnalyseComponent implements OnInit {
   public $image: Observable<Image>;
+  @Input() identity: Session;
 
   constructor(public imageService: ImageService) {
     this.$image = imageService.$selected;

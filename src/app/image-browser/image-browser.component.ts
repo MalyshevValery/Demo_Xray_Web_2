@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ImageService} from '../image.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {InputDialogComponent} from './input-dialog/input-dialog.component';
+import {Session} from '@oryd/kratos-client';
 
 @Component({
   selector: 'app-image-browser',
@@ -13,6 +14,7 @@ import {InputDialogComponent} from './input-dialog/input-dialog.component';
 
 export class ImageBrowserComponent implements OnInit {
   readonly iconSize = 40;
+  @Input() identity: Session;
 
   constructor(public imageService: ImageService,
               public sanitizer: DomSanitizer,
