@@ -26,7 +26,10 @@
   <div *ngIf="!(image.$analysisResults | async)" class="tip">
     Please wait for the image to be analyzed. Results will appear here.
   </div>
-  <div *ngIf="image.error" class="tip">Error</div>
+  <div *ngIf="image.error" class="tip">
+    Error:<br>
+    {{image.error}}
+  </div>
 </div>
 
 <div *ngIf="!($image | async) || (imageService.images.length == 0)"
